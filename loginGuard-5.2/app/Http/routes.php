@@ -20,4 +20,5 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 
 Route::get('admins/login', 'AdministratorsController@showLoginForm');
-Route::post('admins/login', 'AdministratorsController@login')
+Route::post('admins/login', 'AdministratorsController@login');
+Route::get('admins/area', 'AdministratorsController@secret');
