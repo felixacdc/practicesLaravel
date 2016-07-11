@@ -20,7 +20,7 @@ class UserController extends Controller
 
     public function getUsers()
     {
-        $users = $this->userRepo->getUsers();
+        $users = $this->userRepo->getAllData();
         dd($users);
     }
 }
