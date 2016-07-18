@@ -17,15 +17,6 @@
                         <th>Email</th>
                     </tr>
                 </thead>
-                <tbody>
-                    @foreach($users as $user)
-                        <tr>
-                            <td>{{ $user->id }}</td>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->email }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
             </table>
         </div>
 
@@ -34,7 +25,16 @@
 
         <script>
             $(document).ready(function(){
-                $('#myTable').DataTable();
+                $('#myTable').DataTable({
+                    "processing": true,
+                    "serverSide": true,
+                    "ajax": "/api/users",
+                    'columns': [
+                        {data: 'id'},
+                        {data: 'name'},
+                        {data: 'email'}
+                    ]
+                });
             });
         </script>
     </body>
