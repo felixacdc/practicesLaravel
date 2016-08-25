@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('usuarios', ['as' => 'users.index', function () {
+    return 'users';
+}]);
+
 Route::get('/', function () {
     return view('welcome');
 });
