@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('usuarios', ['as' => 'users.index', function () {
-    return 'users';
-}]);
+Route::get('usuarios', ['as' => 'users.index', 'uses' => 'UsersController@index']);
 
 Route::get('/', function () {
     return view('welcome');
