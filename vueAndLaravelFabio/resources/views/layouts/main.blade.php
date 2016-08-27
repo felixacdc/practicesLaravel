@@ -6,6 +6,10 @@
     <link rel="stylesheet" href="{{ url('css/styles.css') }}">
 </head>
 <body>
-    @yield('content')
+    <div class="container">
+        @yield('content')
+    </div>
+
+    <script src="{{ url('js/main.js') }}"></script>
 </body>
 </html>
