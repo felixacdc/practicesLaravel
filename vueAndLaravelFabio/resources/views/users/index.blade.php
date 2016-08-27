@@ -1,8 +1,10 @@
 @extends('layouts.main')
 
 @section('content')
+
+    <vc-users></vc-users>
     
-    <table class="table table-bordered table-striped table-hover">
+    {{-- <table class="table table-bordered table-striped table-hover">
         <thead>
             <tr>
                 <th>Name</th>
@@ -17,6 +19,6 @@
                 </tr>
             @endforeach
         </tbody>
-    </table>
+    </table> --}}
 
 @stop
