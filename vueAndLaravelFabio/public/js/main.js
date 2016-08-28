@@ -10539,14 +10539,25 @@ setTimeout(function () {
 module.exports = Vue;
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"_process":1}],4:[function(require,module,exports){
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
-exports.default = {};
+exports.default = {
+    props: ['users'],
+
+    data: function data() {
+        return {
+            list: []
+        };
+    },
+    ready: function ready() {
+        this.list = JSON.parse(this.users);
+    }
+};
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div _v-54092298=\"\"><h1 _v-54092298=\"\">I am inside of a component!</h1></div>\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div _v-54092298=\"\">\n    <table class=\"table table-bordered table-striped table-hover\" _v-54092298=\"\">\n        <thead _v-54092298=\"\">\n            <tr _v-54092298=\"\">\n                <th _v-54092298=\"\">Name</th>\n                <th _v-54092298=\"\">Email</th>\n            </tr>\n        </thead>\n        <tbody v-for=\"u in list\" _v-54092298=\"\">\n            <tr _v-54092298=\"\">\n                <td _v-54092298=\"\">{{ u.name }}</td>\n                <td _v-54092298=\"\">{{ u.email }}</td>\n            </tr>\n        </tbody>\n    </table>\n</div>\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
