@@ -6,7 +6,8 @@
             return {
                 list: [],
                 sortProperty: 'name',
-                sortDirection: 1
+                sortDirection: 1,
+                filterTerm: ''
             }
         },
 
@@ -32,6 +33,9 @@
 </script>
 <template>
     <div>
+        <div class="well">
+            <input type="text" class="form-control" placeholder="Filtro de la lista" v-model="filterTerm">
+        </div>
         <pre>{{ [sortProperty, sortDirection] | json }}</pre>
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -44,7 +48,7 @@
                     </th>
                 </tr>
             </thead>
-            <tbody v-for="u in list | orderBy sortProperty sortDirection">
+            <tbody v-for="u in list | filterBy filterTerm | orderBy sortProperty sortDirection">
                 <tr>
                     <td>{{ u.name }}</td>
                     <td>{{ u.email }}</td>

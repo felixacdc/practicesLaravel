@@ -10551,7 +10551,8 @@ exports.default = {
         return {
             list: [],
             sortProperty: 'name',
-            sortDirection: 1
+            sortDirection: 1,
+            filterTerm: ''
         };
     },
 
@@ -10576,7 +10577,7 @@ exports.default = {
     }
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div _v-54092298=\"\">\n    <pre _v-54092298=\"\">{{ [sortProperty, sortDirection] | json }}</pre>\n    <table class=\"table table-bordered table-striped table-hover\" _v-54092298=\"\">\n        <thead _v-54092298=\"\">\n            <tr _v-54092298=\"\">\n                <th _v-54092298=\"\">\n                    <a href=\"#\" @click=\"sort($event, 'name')\" _v-54092298=\"\">Name</a>\n                </th>\n                <th _v-54092298=\"\">\n                    <a href=\"#\" @click=\"sort($event, 'email')\" _v-54092298=\"\">Email</a>\n                </th>\n            </tr>\n        </thead>\n        <tbody v-for=\"u in list | orderBy sortProperty sortDirection\" _v-54092298=\"\">\n            <tr _v-54092298=\"\">\n                <td _v-54092298=\"\">{{ u.name }}</td>\n                <td _v-54092298=\"\">{{ u.email }}</td>\n            </tr>\n        </tbody>\n    </table>\n</div>\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div _v-54092298=\"\">\n    <div class=\"well\" _v-54092298=\"\">\n        <input type=\"text\" class=\"form-control\" placeholder=\"Filtro de la lista\" v-model=\"filterTerm\" _v-54092298=\"\">\n    </div>\n    <pre _v-54092298=\"\">{{ [sortProperty, sortDirection] | json }}</pre>\n    <table class=\"table table-bordered table-striped table-hover\" _v-54092298=\"\">\n        <thead _v-54092298=\"\">\n            <tr _v-54092298=\"\">\n                <th _v-54092298=\"\">\n                    <a href=\"#\" @click=\"sort($event, 'name')\" _v-54092298=\"\">Name</a>\n                </th>\n                <th _v-54092298=\"\">\n                    <a href=\"#\" @click=\"sort($event, 'email')\" _v-54092298=\"\">Email</a>\n                </th>\n            </tr>\n        </thead>\n        <tbody v-for=\"u in list | filterBy filterTerm | orderBy sortProperty sortDirection\" _v-54092298=\"\">\n            <tr _v-54092298=\"\">\n                <td _v-54092298=\"\">{{ u.name }}</td>\n                <td _v-54092298=\"\">{{ u.email }}</td>\n            </tr>\n        </tbody>\n    </table>\n</div>\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
