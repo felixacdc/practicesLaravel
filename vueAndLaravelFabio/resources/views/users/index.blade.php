@@ -2,6 +2,6 @@
 
 @section('content')
 
-    <vc-users users="{{ $users }}"></vc-users>
+    <vc-users></vc-users>
 
 @stop

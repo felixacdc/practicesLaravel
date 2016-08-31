@@ -12,6 +12,7 @@
 */
 
 Route::get('usuarios', ['as' => 'users.index', 'uses' => 'UsersController@index']);
+Route::get('api/usuarios/listar', ['as' => 'users.listar', 'uses' => 'UsersController@listar']);
 
 Route::get('/', function () {
     return view('welcome');

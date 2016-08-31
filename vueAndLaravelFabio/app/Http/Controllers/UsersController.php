@@ -14,9 +14,12 @@ class UsersController extends Controller
 
     public function index()
     {
-        $users = User::all();
-
         return view('users.index', compact('users'));
+    }
+
+    public function listar()
+    {
+        return \Response::json(User::all(), 200);
     }
 
 }

@@ -4,7 +4,6 @@
 
         data () {
             return {
-                list: [],
                 sortProperty: 'name',
                 sortDirection: 1,
                 filterTerm: ''
@@ -27,7 +26,7 @@
         },
 
         ready() {
-            this.list = JSON.parse(this.users);
+            this.$http.get('/api/usuarios/listar').then( (req) => this.users = req.data );
         }
     }
 </script>
@@ -48,7 +47,7 @@
                     </th>
                 </tr>
             </thead>
-            <tbody v-for="u in list | filterBy filterTerm | orderBy sortProperty sortDirection">
+            <tbody v-for="u in users | filterBy filterTerm | orderBy sortProperty sortDirection">
                 <tr>
                     <td>{{ u.name }}</td>
                     <td>{{ u.email }}</td>
