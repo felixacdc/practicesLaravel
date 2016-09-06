@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+if ( ! function_exists('welcome')) {
+    function welcome()
+    {
+        if (auth()->check()) {
+            return 'Welcome ' . auth()->user()->name . '!';
+        }
+        
+        return 'Welcome guest!';
+    }
+}
