@@ -19,7 +19,7 @@ if ( ! function_exists('welcome')) {
     function welcome()
     {
         if (auth()->check()) {
-            return 'Welcome ' . auth()->user()->name . '!';
+            return 'Bienvenid' . ( auth()->user()->gender == 'm' ? 'o ' : 'a ' ) . auth()->user()->name . '!';
         }
         
         return 'Welcome guest!';

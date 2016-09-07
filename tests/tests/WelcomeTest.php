@@ -11,17 +11,26 @@ class WelcomeTest extends TestCase
      *
      * @return void
      */
-    public function testExample()
+    public function test_welcome_guest_users()
     {
         $this->assertSame(welcome(), 'Welcome guest!');
     }
 
-    public function test_welcome_a_known_user()
+    public function test_welcome_male_user()
     {
-        $user = new \App\User(['name' => 'Duilio']);
+        $user = new \App\User(['name' => 'Duilio', 'gender' => 'm']);
 
         auth()->login($user);
 
-        $this->assertSame(welcome(), 'Welcome Duilio!');
+        $this->assertSame(welcome(), 'Bienvenido Duilio!');
+    }
+
+    public function test_welcome_female_user()
+    {
+        $user = new \App\User(['name' => 'Marta', 'gender' => 'f']);
+
+        auth()->login($user);
+
+        $this->assertSame(welcome(), 'Bienvenida Marta!');
     }
 }
