@@ -25,3 +25,5 @@ if ( ! function_exists('welcome')) {
         return 'Welcome guest!';
     }
 }
+
+Route::post('paquetes/agregar', 'PaquetesController@agregar');
