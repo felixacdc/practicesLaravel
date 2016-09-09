@@ -13,13 +13,20 @@ class PaquetesController extends Controller
 {
     public function agregar(Request $request)
     {
-        Paquete::create($request->all());
-        
-        if ( !empty($request->Nombre) ) {
-            echo $request->Nombre . ' ha sido agregado';
-        } else {
-            echo 'El compo Nombre es obligatorio.';
+        $rules = [
+            'nombre'      =>  'required',
+            'costo'     =>  'required'
+        ];
+
+        $validator = \Validator::make($request->all(), $rules);
+
+        if ( $validator->fails() ) {
+            return 'El compo Nombre es obligatorio.';
         }
+
+        Paquete::create($request->all());
+
+        return $request->nombre . ' ha sido agregado';
         
     }
 }

@@ -6,16 +6,21 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class PaquetesTest extends TestCase
 {
+    use DatabaseMigrations;
+    use WithoutMiddleware;
+
     /**
      * @group paquetes
      */
 
     public function testsDescripcionCosto()
     {
-        $this->visit('paquetes/agregar')
-                ->type("Paquete100", "Nombre")
-                ->type("1200", "Costo")
-                ->press('Agregar')
+        $data = [
+            'nombre'      =>  'Paquete100',
+            'costo'     =>  1200
+        ];
+
+        $this->post('paquetes/agregar', $data)
                 ->see("Paquete100 ha sido agregado");
     }
 
@@ -25,9 +30,11 @@ class PaquetesTest extends TestCase
 
     public function testsSinDescripcion()
     {
-        $this->visit('paquetes/agregar')
-                ->type("1200", "Costo")
-                ->press('Agregar')
+        $data = [
+            'nombre'      =>  'Paquete100'
+        ];
+
+        $this->post('paquetes/agregar', $data)
                 ->see("El compo Nombre es obligatorio.");   
     }
 }

@@ -26,4 +26,4 @@ if ( ! function_exists('welcome')) {
     }
 }
 
-Route::post('paquetes/agregar', 'PaquetesController@agregar');
+Route::post('/paquetes/agregar', 'PaquetesController@agregar');
