@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\User;
+use JavaScript;
 
 class HomeController extends Controller
 {
@@ -17,7 +18,13 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {	
+    	$users = User::all();
+
+    	JavaScript::put([
+    		'users' => $users
+    	]);
+
         return view('welcome');
     }
 }
